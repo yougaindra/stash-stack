@@ -6,8 +6,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/yougaindra/stash-stack/internal/genericstack"
-	"github.com/yougaindra/stash-stack/internal/stack"
+	"github.com/yougaindra/stash-stack/pkg/genericstack"
+	stack "github.com/yougaindra/stash-stack/pkg/intstack"
 )
 
 type StackStruct struct {
