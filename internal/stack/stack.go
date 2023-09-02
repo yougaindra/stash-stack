@@ -76,7 +76,7 @@ func (s *stashStack) Push(x int) bool {
 	}
 	stash := exec.Command("git", "-C", s.name, "stash", "push", "-m", strconv.Itoa(x))
 	err = stash.Run()
-	return s.gitCommands.GitStash(s.name, strconv.Itoa(x)) == nil
+	return err == nil
 }
 
 func (s *stashStack) Cleanup() error {
