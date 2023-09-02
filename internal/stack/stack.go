@@ -50,9 +50,6 @@ func (s *stashStack) Pop() (int, error) {
 		return -1, err
 	}
 	vals := strings.Split(string(val), "\n")
-	// for _, v := range vals {
-	// 	println(v)
-	// }
 	firstLine := strings.Split(vals[0], " ")
 	ret := firstLine[len(firstLine)-1]
 	if err = s.gitCommands.GitDrop(s.name); err != nil {
@@ -74,9 +71,7 @@ func (s *stashStack) Push(x int) bool {
 	if err != nil {
 		return false
 	}
-	stash := exec.Command("git", "-C", s.name, "stash", "push", "-m", strconv.Itoa(x))
-	err = stash.Run()
-	return err == nil
+	return s.gitCommands.GitAdd(s.name, strconv.Itoa(x)) == nil
 }
 
 func (s *stashStack) Cleanup() error {
